@@ -5,6 +5,6 @@ import { threatRulesKeys } from '../queryKeys'
 export function useThreatRules() {
   return useQuery({
     queryKey: threatRulesKeys.lists(),
-    queryFn: getThreatRules,
+    queryFn: ({ signal }) => getThreatRules(signal),
   })
 }

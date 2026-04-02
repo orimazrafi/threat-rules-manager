@@ -7,6 +7,9 @@ export function createQueryClient(): QueryClient {
         staleTime: 60_000,
         retry: 1,
       },
+      mutations: {
+        retry: false,
+      },
     },
   })
 }

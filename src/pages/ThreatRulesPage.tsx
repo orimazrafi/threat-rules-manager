@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from 'react'
 import { SelectedThreatRulePreview } from '../features/threat-rules/components/SelectedThreatRulePreview'
-import { ThreatRulesListPreview } from '../features/threat-rules/components/ThreatRulesListPreview'
+import { VirtualizedThreatRulesTable } from '../features/threat-rules/components/VirtualizedThreatRulesTable'
 import { ThreatRulesSummary } from '../features/threat-rules/components/ThreatRulesSummary'
 import { ThreatRulesToolbar } from '../features/threat-rules/components/ThreatRulesToolbar'
 import { useDebounce } from '../features/threat-rules/hooks/useDebounce'
@@ -126,15 +126,11 @@ export function ThreatRulesPage() {
 
       <div className="threat-rules-page__layout">
         <div className="threat-rules-page__list-column">
-          {visibleRules.length === 0 ? (
-            <p className="threat-rules-page__empty-results">No rules match the current search and filters.</p>
-          ) : (
-            <ThreatRulesListPreview
-              rules={visibleRules}
-              selectedRuleId={selectedRuleId}
-              onSelectRuleId={setSelectedRuleId}
-            />
-          )}
+          <VirtualizedThreatRulesTable
+            data={visibleRules}
+            selectedRuleId={selectedRuleId}
+            onSelectRuleId={setSelectedRuleId}
+          />
         </div>
         <SelectedThreatRulePreview rule={selectedRule} />
       </div>

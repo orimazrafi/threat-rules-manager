@@ -218,12 +218,6 @@ body {
   opacity: 0.6;
 }
 
-.threat-rules-page__empty-results {
-  margin: 0;
-  padding: 1rem 0;
-  color: var(--text-muted);
-}
-
 .threat-rules-page__layout {
   display: grid;
   grid-template-columns: 1fr minmax(16rem, 22rem);
@@ -237,51 +231,103 @@ body {
   }
 }
 
-.threat-rules-list-preview {
-  overflow-x: auto;
+.threat-rules-virtual-table {
   border: 1px solid var(--border);
   border-radius: 0.5rem;
+  overflow: hidden;
+  font-size: 0.8125rem;
+  background: var(--surface);
 }
 
-.threat-rules-list-preview__table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.875rem;
+.threat-rules-virtual-table--empty {
+  padding: 1.25rem 1.5rem;
 }
 
-.threat-rules-list-preview__table th,
-.threat-rules-list-preview__table td {
-  padding: 0.5rem 0.65rem;
-  text-align: left;
+.threat-rules-virtual-table__empty {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.threat-rules-virtual-table__header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: color-mix(in srgb, var(--surface) 88%, var(--text) 12%);
   border-bottom: 1px solid var(--border);
 }
 
-.threat-rules-list-preview__table th {
+.threat-rules-virtual-table__header-row {
+  display: grid;
+  align-items: stretch;
+}
+
+.threat-rules-virtual-table__header-cell {
+  padding: 0.5rem 0.6rem;
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
   color: var(--text-muted);
-  background: color-mix(in srgb, var(--surface) 85%, var(--text) 15%);
+  border-right: 1px solid var(--border);
 }
 
-.threat-rules-list-preview__row {
-  cursor: pointer;
+.threat-rules-virtual-table__header-cell:last-child {
+  border-right: none;
 }
 
-.threat-rules-list-preview__row:hover {
-  background: color-mix(in srgb, var(--surface) 90%, var(--text) 10%);
+.threat-rules-virtual-table__scroll {
+  max-height: min(28rem, 60vh);
+  overflow: auto;
+  outline: none;
 }
 
-.threat-rules-list-preview__row.is-selected {
-  background: color-mix(in srgb, var(--surface) 82%, var(--text) 18%);
-  outline: 2px solid var(--border);
-  outline-offset: -2px;
-}
-
-.threat-rules-list-preview__row:focus-visible {
+.threat-rules-virtual-table__scroll:focus-visible {
   outline: 2px solid Highlight;
-  outline-offset: -2px;
+  outline-offset: 2px;
+}
+
+.threat-rules-virtual-table__virtual-window {
+  position: relative;
+  width: 100%;
+}
+
+.threat-rules-virtual-table__row {
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  box-sizing: border-box;
+}
+
+.threat-rules-virtual-table__row:hover {
+  background: color-mix(in srgb, var(--surface) 92%, var(--text) 8%);
+}
+
+.threat-rules-virtual-table__row.is-selected {
+  background: color-mix(in srgb, var(--surface) 82%, var(--text) 18%);
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--border) 70%, var(--text) 30%);
+}
+
+.threat-rules-virtual-table__row-grid {
+  display: grid;
+  align-items: center;
+  height: 100%;
+  min-height: 44px;
+}
+
+.threat-rules-virtual-table__cell {
+  padding: 0 0.6rem;
+  border-right: 1px solid var(--border);
+  min-width: 0;
+}
+
+.threat-rules-virtual-table__cell:last-child {
+  border-right: none;
+}
+
+.threat-rules-virtual-table__cell-text {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .selected-threat-rule-preview {

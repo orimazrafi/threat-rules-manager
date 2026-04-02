@@ -7,7 +7,7 @@ export function useThreatRule(ruleId: string | undefined) {
     queryKey: ruleId
       ? threatRulesKeys.detail(ruleId)
       : ([...threatRulesKeys.all, 'detail', 'idle'] as const),
-    queryFn: () => getThreatRuleById(ruleId!),
+    queryFn: ({ signal }) => getThreatRuleById(ruleId!, signal),
     enabled: Boolean(ruleId),
   })
 }
