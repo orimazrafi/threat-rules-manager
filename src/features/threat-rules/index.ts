@@ -3,6 +3,9 @@ export type {
   ThreatRuleSeverity,
   ThreatRuleSource,
   ThreatRuleStatus,
+  ThreatRulesSortDirection,
+  ThreatRulesSortKey,
+  ThreatRulesToolbarFilters,
   UpdateThreatRuleInput,
 } from './types'
 export { threatRulesKeys } from './queryKeys'

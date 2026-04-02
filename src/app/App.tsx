@@ -1,4 +1,4 @@
-import { HomePage } from '../pages/HomePage'
+import { ThreatRulesPage } from '../pages/ThreatRulesPage'
 import { AppProviders } from './providers'
 
 export default function App() {
@@ -6,7 +6,7 @@ export default function App() {
     <AppProviders>
       <div className="app-shell">
         <main className="app-shell__main">
-          <HomePage />
+          <ThreatRulesPage />
         </main>
       </div>
     </AppProviders>

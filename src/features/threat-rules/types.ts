@@ -25,3 +25,13 @@ export type UpdateThreatRuleInput = {
   threshold?: number
   owner?: string | null
 }
+
+export type ThreatRulesSortKey = 'updatedAt' | 'createdAt' | 'severity' | 'name'
+
+export type ThreatRulesSortDirection = 'asc' | 'desc'
+
+export type ThreatRulesToolbarFilters = {
+  severity: ThreatRuleSeverity | 'all'
+  source: ThreatRuleSource | 'all'
+  status: ThreatRuleStatus | 'all'
+}
