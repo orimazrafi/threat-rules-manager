@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from 'react'
-import { SelectedThreatRulePreview } from '../features/threat-rules/components/SelectedThreatRulePreview'
+import { ThreatRuleDetailsPanel } from '../features/threat-rules/components/ThreatRuleDetailsPanel'
 import { VirtualizedThreatRulesTable } from '../features/threat-rules/components/VirtualizedThreatRulesTable'
 import { ThreatRulesSummary } from '../features/threat-rules/components/ThreatRulesSummary'
 import { ThreatRulesToolbar } from '../features/threat-rules/components/ThreatRulesToolbar'
@@ -43,11 +43,6 @@ export function ThreatRulesPage() {
     )
     return filtered.toSorted((a, b) => compareRules(a, b, sortKey, sortDirection))
   }, [data, debouncedSearch, filters, sortDirection, sortKey])
-
-  const selectedRule = useMemo(() => {
-    if (!data || !selectedRuleId) return null
-    return data.find((r) => r.id === selectedRuleId) ?? null
-  }, [data, selectedRuleId])
 
   const handleClearFilters = useCallback(() => {
     setSearchText('')
@@ -132,7 +127,7 @@ export function ThreatRulesPage() {
             onSelectRuleId={setSelectedRuleId}
           />
         </div>
-        <SelectedThreatRulePreview rule={selectedRule} />
+        <ThreatRuleDetailsPanel ruleId={selectedRuleId} />
       </div>
     </div>
   )
